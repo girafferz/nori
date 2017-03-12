@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,258 +8,157 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Bootstrap 101 Template</title>
 
+  <!-- Bootstrap -->
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 
 
-material.indigo-pink.min.css">
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>    
-  <style type="text/css">
-    .box {
-      float: left;
-      overflow: hidden;
-      width: 90px;
-      margin: 3px;
-    }
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+      <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>    
+      <style type="text/css">
+        .box {
+          float: left;
+          overflow: hidden;
+          width: 90px;
+          margin: 3px;
+        }
 
 
-    /* clearfix */
-    .boxContainer:before,
-    .boxContainer:after {
-      content: "";
-      display: table;
-    }
+        /* clearfix */
+        .boxContainer:before,
+        .boxContainer:after {
+          content: "";
+          display: table;
+        }
 
-    .boxContainer:after {
-      clear: both;
-    }
-  </style>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        .boxContainer:after {
+          clear: both;
+        }
+      </style>
 
-</head>
-<body>
+    </head>
+    <body>
 
-  <div class="container">
-    <div class="boxContainer">
-
-      <div id="hoge1" class="box" style="background-color: #DDA0DD; height: 200px; box-shadow: 5px 5px 10px rgba(0,0,0,0.4); display: inline-block;">
-        <p id="text1">
-          <img style="height: 300px" src="https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344">
-        </p>
+      <div class="boxContainer">
+        <div id="hoge1" class="box" style="background-color: #DDA0DD; height: 200px; box-shadow: 5px 5px 10px rgba(0,0,0,0.4); display: inline-block;">
+          <p id="text1">
+            <img style="height: 300px" src="https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344">
+          </p>
+        </div>
+        <div id="hoge2" class="box"  style="background-color: #D2B48C; height: 200px; box-shadow: 5px 5px 10px rgba(0,0,0,0.4); display: inline-block;">
+          <p id="text2">
+            <img style="height: 250px" src="https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344">
+          </p>
+        </div>
+        <div id="hoge3" class="box"  style="background-color: #3CB371; height: 200px; box-shadow: 5px 5px 10px rgba(0,0,0,0.4); display: inline-block;">
+          <p id="text3">
+            <img style="height: 200px" src="https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344">
+          </p>
+        </div>
       </div>
-      <div id="hoge2" class="box"  style="background-color: #D2B48C; height: 200px; box-shadow: 5px 5px 10px rgba(0,0,0,0.4); display: inline-block;">
-        <p id="text2">
-          <img style="height: 250px" src="https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344">
-        </p>
-      </div>
-      <div id="hoge3" class="col-6 col-sm-4 col-md-3 col-lg-2 col-xl-1 box"  style="background-color: #3CB371; height: 200px; box-shadow: 5px 5px 10px rgba(0,0,0,0.4); display: inline-block;">
-        <p id="text3">
-          <img style="height: 200px" src="https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344">
-        </p>
-      </div>
+
+
+
+
+
+      <a href="http://yahoo.co.jp">jump to Yahoo! </a>
+
+      <button id="demo-menu-lower-left"
+      class="mdl-button mdl-js-button mdl-button--icon">
+      <i class="material-icons">more_vert</i>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+    for="demo-menu-lower-left">
+    <li class="mdl-menu__item">
+      <a href="http://yahoo.co.jp">jump to Yahoo! </a>
+    </li>
+    <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">
+      <a href="./hoge.html">jump to hoge </a>
+    </li>
+    <li disabled class="mdl-menu__item">Disabled Action</li>
+    <li class="mdl-menu__item">Yet Another Action</li>
+  </ul>
+
+  <header style="background-color:gray">Header</header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2" style="background-color:red;">Red</div>
+      <div class="col-sm-8" style="background-color:blue;">Blue</div>
+      <div class="col-sm-2" style="background-color:yellow;">Yellow</div>
     </div>
   </div>
-</div>
+  <footer style="background-color:gray">Footer</footer>
 
-
-
-
-<a href="http://yahoo.co.jp">jump to Yahoo! </a>
-
-<button id="demo-menu-lower-left"
-class="mdl-button mdl-js-button mdl-button--icon">
-<i class="material-icons">more_vert</i>
-</button>
-<ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-for="demo-menu-lower-left">
-<li class="mdl-menu__item">
-  <a href="http://yahoo.co.jp">jump to Yahoo! </a>
-</li>
-<li class="mdl-menu__item mdl-menu__item--full-bleed-divider">
-  <a href="./hoge.html">jump to hoge </a>
-</li>
-<li disabled class="mdl-menu__item">Disabled Action</li>
-<li class="mdl-menu__item">Yet Another Action</li>
-</ul>
-
-<header style="background-color:gray">Header</header>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2" style="background-color:red;">Red</div>
-    <div class="col-sm-8" style="background-color:blue;">Blue</div>
-    <div class="col-sm-2" style="background-color:yellow;">Yellow</div>
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>名前</th>
+            <th>メールアドレス</th>
+            <th>電話番号</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>煌木 太郎</td>
+            <td>taro.kirameki@example.com</td>
+            <td>09011112222</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>煌木 次郎</td>
+            <td>jiro.kirameki@example.com</td>
+            <td>09033334444</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>煌木 花子</td>
+            <td>hanako.kirameki@example.com</td>
+            <td>09055556666</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-<footer style="background-color:gray">Footer</footer>
-
-<div class="container">
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>名前</th>
-          <th>メールアドレス</th>
-          <th>電話番号</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>煌木 太郎</td>
-          <td>taro.kirameki@example.com</td>
-          <td>09011112222</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>煌木 次郎</td>
-          <td>jiro.kirameki@example.com</td>
-          <td>09033334444</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>煌木 花子</td>
-          <td>hanako.kirameki@example.com</td>
-          <td>09055556666</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 
 
-<button>click</button>
+  <button>click</button>
 
-<script type="text/javascript">
-  $(function() {
-    $('button').click(function(){
-      $('.mdl-card__title').toggle();
+  <script type="text/javascript">
+    $(function() {
+      $('button').click(function(){
+        $('.mdl-card__title').toggle();
+      });
     });
-  });
-</script>
-<!-- Square card -->
-<style>
-  .demo-card-square.mdl-card {
-    width: 320px;
-    height: 320px;
-  }
-  .demo-card-square > .mdl-card__title {
-    color: #fff;
-    background:
-    bottom right 15% no-repeat #A6B6AC;
-    opacity: 0.6;
-  }
+  </script>
+  <!-- Square card -->
+  <style>
+    .demo-card-square.mdl-card {
+      width: 320px;
+      height: 320px;
+    }
+    .demo-card-square > .mdl-card__title {
+      color: #fff;
+      background:
+      bottom right 15% no-repeat #A6B6AC;
+      opacity: 0.6;
+    }
 
 
-</style>
-<div id='dogsan'></div>
-<div class="demo-card-square mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text">Update</h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Aenan convallis.
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <a href="./hoge.html" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      View Updates
-    </a>
-  </div>
-</div>
-
-
-
-<script type="text/javascript">
-  $(function(){
-    $("#hoge1").click(function(){
-      $("#text1").toggle();
-    });
-
-    $("#hoge2").click(function(){
-      $("#text2").toggle();
-    });
-
-    $("#hoge3").click(function(){
-      $("#text3").toggle();
-    });
-
-    $("#hoge4").click(function(){
-      $("#text4").toggle();
-    });
-
-
-  });
-</script>
-
-
-<button type="button" class="btn btn-default">aaaaaa</button>
-<button type="button" class="btn btn-primary">Primary</button>
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<a href="./hoge.html" ><button type="button" class="btn btn-danger btn-lg btn-block">Danger</button></a>
-<button type="button" class="btn btn-link">Link</button>
-
-<Form action="./hoge.html">
-  <Div class = "form-group">
-    <Label for = "exampleInputEmail1"> Email address </label>
-      <Input type = "email" class = "form-control" id = "exampleInputEmail1" placeholder = "Email">
-      </Div>
-      <Div class = "form-group">
-        <Label for = "exampleInputPassword1"> Password </label>
-          <Input type = "password" class = "form-control" id = "exampleInputPassword 1" placeholder = "Password">
-          </Div>
-          <Div class = "form-group">
-            <Label for = "exampleInputFile"> File input </label>
-              <Input type = "file" id = "exampleInputFile">
-                <P class = "help-block"> Example block-level help text here. </P>
-              </Div>
-              <Div class = "checkbox">
-                <Label>
-                  <Input type = "checkbox"> Check me out
-                  </Label>
-                </Div>
-                <Button type = "submit" class = "btn btn - default"> Submit </button>
-                </Form>
-
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                  Button
-                </button>
-
-                <form class="form-inline">
-                  <div class="form-group">
-                    <label for="exampleInputName2">Name</label>
-                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail2">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-                  </div>
-                  <button type="submit" class="btn btn-default">Send invitation</button>
-                </form>
-
-                <div id="fuga0">
-                  aaa
-                  <div id="hoge0">Hello,</div>
-
-                  <div id="hoge1">w</div>
-                  <div class="hoge2">orld!</div>
-                </div>
-                <!-- Include all compiled plugins (below), or include individual files as needed -->
-                <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-                <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBhxN6qKtWjJBSYqVKpygg2kTVt6KAZnNU",
-    authDomain: "nori-c9023.firebaseapp.com",
-    databaseURL: "https://nori-c9023.firebaseio.com",
-    storageBucket: "nori-c9023.appspot.com",
-    messagingSenderId: "682021811330"
-  };
-  firebase.initializeApp(config);
-</script>
-
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-</body>
-</html>
+  </style>
+  <div id='dogsan'></div>
+  <div class="demo-card-square mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Update</h2>
+    </div>
+    <
