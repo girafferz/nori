@@ -45,7 +45,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   
   <h1 class="card-panel teal lighten-2" style="font-size: 20px;text-align: center;">
-    どうぶつ　神経衰弱  1000枚</h1>
+    どうぶつ　神経衰弱  100枚</h1>
 
     <div class="card-panel teal lighten-2">１台のスマホを使い友達と交互にカードをタップしてめくってね</div>
 
@@ -54,7 +54,7 @@
     </a>    
     
     <ul id="app1">
-      <div class="box" style="background-color: #DDA0DD;" v-for="item in image">
+      <div class="box" style="background-color: #2EFE64;" v-for="item in image">
         <p class="box_img">
           <img class="imgobj" :src="item.url" />
         </p>
@@ -75,18 +75,85 @@
        $('.box_img').hide();
       });
 
+      function shuffle(array) {
+  var n = array.length, t, i;
+
+  while (n) {
+    i = Math.floor(Math.random() * n--);
+    t = array[n];
+    array[n] = array[i];
+    array[i] = t;
+  }
+
+  return array;
+}
+
 
       var listItems = [
       {url: 'https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344'},
-      {url: 'https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344'},
-      {url: 'https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344'},
-      {url: 'https://firebasestorage.googleapis.com/v0/b/nori-c9023.appspot.com/o/cat.png?alt=media&token=34d4ac19-b84a-4840-8064-bc04da394344'},
+      {url: 'http://r.ddmcdn.com/s_f/o_1/cx_297/cy_0/cw_1201/ch_1201/w_720/APL/uploads/2014/08/wild-animal-safari-zebra-5371037.jpg'},
+      {url: 'https://s-media-cache-ak0.pinimg.com/originals/05/34/2b/05342bbe53e938f3e82ef79fc0d1ec32.jpg'},
+      {url: 'http://healingspiritvet.com/wp-content/uploads/2016/03/16.jpg'},
+      {url: 'http://healingspiritvet.com/wp-content/uploads/2016/03/14.jpg'},
+      {url:'http://wallpaper.sc/en/ipad/wp-content/uploads/2014/10/ipad-2048x2048-thumbnail_01046-256x256.jpg'},
+      {url:'https://avatarfiles.alphacoders.com/562/56282.jpg'},
+      {url:'http://21786-presscdn.pagely.netdna-cdn.com/wp-content/uploads/2012/10/NE_Animal_Saki.jpg'},
+      {url:'http://static.wixstatic.com/media/be49e7_3b2ca0d2b8b34150ad0e885c32910f25.jpg_256'},
+      {url:'https://pbs.twimg.com/profile_images/3439130977/c60a3a89f1667393b6576549715051db.jpeg'},
+      {url:'http://wallpaper.sc/en/ipad/wp-content/uploads/2016/08/ipad-2048x2048-thumbnail_01700-256x256.jpg'},
+      {url:'https://images-na.ssl-images-amazon.com/images/I/71YA238DPAL._SL256_.jpg'},
+      {url:'https://68.media.tumblr.com/avatar_59c6d9e13788_128.png'},
+      {url:'https://images-na.ssl-images-amazon.com/images/I/51ER3Z15hJL._SL256_.jpg'},
+      {url:'https://images-na.ssl-images-amazon.com/images/I/71nr8qN8MJL._SL256_.jpg'},
+      {url:'http://static.greatbigcanvas.com/images/square/national-geographic/close-up-of-an-african-eagle-ow-animal-kingdom-orlando-florida,ng398799.jpg?max=128'},
+      {url:'http://cdn1.medicalnewstoday.com/content/categories/cjd-vcjd/thumbs/image3.jpg'},
+      {url:'https://is1-ssl.mzstatic.com/image/thumb/Purple2/v4/28/f0/17/28f01784-f4e4-feec-6f1d-a425de238939/source/256x256bb.jpg'},
+      {url:'https://s-media-cache-ak0.pinimg.com/originals/fb/52/4d/fb524d9716b08773e6b6e69670226e7a.jpg'},
+      {url:'http://myhswm.org/images/sized/images/animals/Nanette_-_Copy-256x256.jpg'},
+      {url:'https://static.wixstatic.com/media/b80067167e9bdabd25611ebecf741107.png_256'},
+      {url:'https://images-na.ssl-images-amazon.com/images/I/719RJ1nXFxL._SL256_.jpg'},
+      {url:'http://myhswm.org/images/sized/images/animals/Frankie_Profile_-_Copy-256x256.jpg'},
+      {url:'https://s-media-cache-ak0.pinimg.com/564x/8e/d5/75/8ed575f5379b0264f84506a62d031636.jpg'},
+      {url:'http://wallpaper.sc/en/ipad/wp-content/uploads/2015/12/ipad-2048x2048-thumbnail_01637-256x256.jpg'},
+      {url:'https://pbs.twimg.com/profile_images/703554305782054912/osSSydtK_400x400.jpg'},
+      {url:'http://wallpaper.sc/en/ipad/wp-content/uploads/2016/10/ipad-2048x2048-thumbnail_01790-256x256.jpg'},
+      {url:'http://myhswm.org/images/sized/images/animals/Remy_Stray_Resized-256x256.jpg'},
+      {url:'https://static.wixstatic.com/media/2f678b_2e06529a19e84900b5a55f06781cb968~mv2_d_1280_1280_s_2.jpg_256'},
+      {url:'https://rr.img.naver.jp/mig?src=http%3A%2F%2Fimgcc.naver.jp%2Fkaze%2Fmission%2FUSER%2F20121021%2F18%2F1340638%2F73%2F256x256x641570ca5903177d3ec0b312.jpg&twidth=1200&theight=1200&qlt=80&res_format=jpg&op=r'},
+      {url:'http://myhswm.org/images/sized/images/animals/kitty_resized-256x256.jpg'},
+      {url:'https://pbs.twimg.com/profile_images/378800000078781818/34de1b7ed5a7babc5ba6a6c4376e21e6.jpeg'},
+      {url:'https://is3-ssl.mzstatic.com/image/thumb/Purple49/v4/24/19/d8/2419d8ff-1440-3edf-4036-32917cce93e3/source/256x256bb.jpg'},
+      {url:'https://image.comolib.com/sq-cropped-small/8a61fd9f6a4ef534cbe532cba06c4cb5945ea31aef124bfdcab28856526072ea.jpg?1477936538='},
+      {url:'https://image.comolib.com/sq-cropped-small/273727ec935d175bb053cb4056c8dc1ee21b1b4a8fea0027975e2ebdf06a23b0.jpg?1477929841='},
+      {url:'http://cdn1-www.dogtime.com/assets/uploads/2013/01/file_17120_dog-looks-like-a-lion.jpg'},
+      {url:'https://pbs.twimg.com/profile_images/626635699559747584/jkfex0ZX.jpg'},
+      {url:'https://static2.crated.com/C5JOzBNRDPkDsJ7onu1frPpY5IQ=/fit-in/256x256/filters:quality(80)/crated/thumbs/art/2016/03/26/e2ef098a5f7cd880b14d8f161f26a06c/960.jpg'},
+      {url:'http://petitlyrics.com/images/user/photo/photo_saku.jpg?2017021702'},
+      {url:'https://pbs.twimg.com/profile_images/659762764303306752/Nz0QIl4a.jpg'},
+      {url:'https://a.wattpad.com/useravatar/wildlionlife.256.585912.jpg'},
+      {url:'http://sglions.org/wp-content/uploads/2015/05/wpid-photo-13-avr-2011-1604-555baa8dv1_site_icon-256x256.png'},
+      {url:'https://pbs.twimg.com/profile_images/649527822831083520/DlKruDnB_400x400.jpg'},
+      {url:'https://images-na.ssl-images-amazon.com/images/I/61vPwyC6PUL._CR127,0,510,510_UX256.jpg'},
+      {url:'https://images-na.ssl-images-amazon.com/images/I/71EqS9eTlwL._SL256_.jpg'},
+      {url:'https://lh5.googleusercontent.com/-lPf77z8TLd8/AAAAAAAAAAI/AAAAAAAAAUE/Kel4-4kMYVs/photo.jpg'},
+      {url:'https://images-na.ssl-images-amazon.com/images/I/81NKS1QtBYL._CR180,0,1080,1080_UX256.jpg'},
+      {url:'https://lh3.googleusercontent.com/-hplDm2FUUjA/AAAAAAAAAAI/AAAAAAAABgg/Li6dUZkdfhI/photo.jpg'},
+      {url:'https://lh6.googleusercontent.com/-ILHVylxf2vw/AAAAAAAAAAI/AAAAAAAABHg/z44FcYZuLa0/photo.jpg'},
+      {url:'https://a2-images.myspacecdn.com/images03/32/fbd925466d0f42f8bd8a4cf9a3dabfee/300x300.jpg'},
+      
       ]
+
+      var doubleList = []
+      doubleList = listItems.concat(listItems)
+
+      doubleList = shuffle(doubleList)
+
+      console.log(doubleList.length)
 
       var example1 = new Vue({
         el: '#app1',      
         data: {
-                    image: listItems
+                    image: doubleList
                   }
       })
     </script>
