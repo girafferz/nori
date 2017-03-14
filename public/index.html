@@ -35,17 +35,38 @@
    }
 
  </style>
- <title>funny animal concentration memory card game!</title>
-
-</head>
-<body>
+ <title>（激ムズ）かわいいどうぶつ　神経衰弱ウェブゲーム  100枚</title>
+<style>
+.demo-list-item {
+  width: 300px;
+}
+</style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+  var Anum = 0;
+  var Bnum = 0;
+  $("#palyerAbutton").click(function() {
+    Anum++
+    $("#palyerA").text(Anum)
+  });
+
+  $("#palyerBbutton").click(function() {
+    Bnum++
+    $("#palyerB").text(Bnum)
+    });
+});
+
+</script>
+</head>
+<body>
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
   
   <h1 class="card-panel teal lighten-2" style="font-size: 20px;text-align: center; color: white;">
-    どうぶつ　神経衰弱  100枚</h1>
+    （激ムズ）かわいいどうぶつ　神経衰弱ウェブゲーム  100枚</h1>
 
     <div class="card-panel teal lighten-2" style="color: white;">１台のスマホを使い友達と交互にカードをタップしてめくってね</div>
 
@@ -53,6 +74,28 @@
     <div class="card-panel teal lighten-2" style="color: #FFF">(広告) かわいいどうぶつキーホルダー</div>
     </a>    
     
+    <ul class="demo-list-item mdl-list">
+  <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+    <button id="palyerAbutton" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+  <i class="material-icons">add</i>
+</button>
+      プレイヤーAさんの点数:<div id="palyerA">0</div>
+    </span>
+  </li>
+  <li class="mdl-list__item">
+    <span class="mdl-list__item-primary-content">
+<button id="palyerBbutton"  class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+  <i class="material-icons">add</i>
+</button>
+      プレイヤーBさんの点数:<div id="palyerB"></div>
+    </span>
+  </li>
+</ul>
+
+
+
+
     <ul id="app1">
       <div class="box" style="background-color: #04B486;" v-for="item in image">
         <p class="box_img">
