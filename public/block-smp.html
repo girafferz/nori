@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"> 
+ <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;  
+}
+ 
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+ 
+function disableScroll() {
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove  = preventDefault; // mobile
+  document.onkeydown  = preventDefaultForScrollKeys;
+}
+ 
+function enableScroll() {
+    if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.onmousewheel = document.onmousewheel = null; 
+    window.onwheel = null; 
+    window.ontouchmove = null;  
+    document.onkeydown = null;  
+}
+  </script>
+    <style>
+* {
+  padding: 0;
+  margin: 0;
+}
+    body {
+      padding: 8px;
+      cursor: none !important;
+    }
+    body {
+      /* 画像ファイルの指定 */
+      background-image: url("");
+
+      /* 画像を常に天地左右の中央に配置 */
+      background-position: center center;
+
+      /* 画像をタイル状に繰り返し表示しない */
+      background-repeat: no-repeat;
+
+      /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+      background-attachment: fixed;
+
+      /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+      background-size: cover;
+
+      /* 背景画像が読み込まれる前に表示される背景のカラー */
+      background-color: #464646;
+    }
+
+    :root {
+      --brick-width: 10vw;
+      --brick-height: 5vh;
+      --brick-margin: 0.5vh;
+      --brick-border: 0.5vh;
+      --field-width: 97vw; 
+      --field-height: 100vw; 
+      --field-top: 1vh; 
+      --paddle-top: 80vh;
+    }
+
+    #field {
+      width: var(--field-width);
+      height: var(--field-height);
+      padding-top: var(--field-top);
+      border: var(--field-border) solid #ccc;
+      font-size: 0;
+      position: relative;
+      /* background-image: url('a.JPG'); */
+      /* background-image: url('http://www.warrenphotographic.co.uk/photography/bigs/03008-Cute-Birman-kitten-and-rabbit-white-background.jpg'); */
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .brick,
+    .removed {
+      /* width: 28px; */
+      width: var(--brick-width);
+      height: var(--brick-height);
+      margin: var(--brick-margin);
+      border: var(--brick-border) solid;
+      display: inline-block;
+      /* margin: 1px; */
+      /* border: 1px solid; */
+    }
+
+    .brick {
+      background-color: #777 #777 #111 #222;
+      border-radius: 3px;
+    }
+
+    .brick:nth-child(2n) {
+      background: linear-gradient(to bottom, #ccc 10%, #800 100%);
+    }
+    .brick:nth-child(3n) {
+      background: linear-gradient(to bottom, #ccc 10%, #080 100%);
+    }
+    .brick:nth-child(5n) {
+      background: linear-gradient(to bottom, #ccc 10%, #008 100%);
+    }
+    .removed {
+      border-color: transparent;
+    }
+    #paddle {
+      width: 20vw;
+      height: 5vw;
+      border: 1px solid #777;
+      background: linear-gradient(to bottom, #cdd 10%, #777 100%);
+      position: absolute;
+      left: 128px;
+      top: var(--paddle-top);
+      border-radius: 3px;  
+    }
+
+    #ball {
+      width: 10px;
+      height: 10px;
+      border: 1px solid #955;
+      border-radius:50%;
+      position: absolute;
+      background-color: white;
+    }
+    #lifesNode,
+    #scoreNode {
+      position: absolute;
+      left: 10px;
+      top: 70vh;
+      font: 14px arial;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 1px 0;
+      width: 75px;
+      text-align: center;
+    }
+    #scoreNode:before {
+      content: 'score:';
+    }
+    #lifesNode {
+      left: 30vw;
+    }
+    #lifesNode:before {
+      content: 'lifes:';
+    }
+    #ball {
+      top: var(--paddle-top);
+    }
+
+    </style>
+  </head>
+  <div id="field">
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+    <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+   <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+   <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+   <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+   <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+   <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+   <div class="brick">0</div><div class="brick">1</div><div class="brick">2</div>
+  
+    
+    <div id="paddle"></div>
+    <div id="ball" style="left: 10vw; top: 90vh;"></div>
+    <div id="lifesNode">3</div>
+    <div id="scoreNode">0</div>
+  </div>
+  <script type="text/javascript">
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+function _rmUnit(str, unit) {
+  var replace = unit;
+  var re = new RegExp(replace,"g");
+  var res = parseFloat(str.replace(re, ""));
+  return res;
+}
+function px2vw(px) {
+  var pxvw = px / document.documentElement.clientWidth * 100.0; // px -> vw
+  //console.log('---pxvw---' + pxvw);
+  return parseFloat(pxvw);
+}
+function px2vh(px) {
+  var pxvh = px / document.documentElement.clientHeight * 100.0; // px -> vw
+  console.log('---pxvh---' + pxvh);
+  return pxvh;
+}
+
+(function (fld, pF, px, dx, dy, lifes, score) {
+  var bodyStyles = window.getComputedStyle(document.body);
+  var brickHeight = bodyStyles.getPropertyValue('--brick-height');
+  var brickWidth = bodyStyles.getPropertyValue('--brick-width');
+  var brickMargin = bodyStyles.getPropertyValue('--brick-margin');
+  var brickBorder = bodyStyles.getPropertyValue('--brick-border');
+  var fieldTop = _rmUnit(bodyStyles.getPropertyValue('--field-top'));
+  var fieldWidthF = parseFloat(bodyStyles.getPropertyValue('--field-width'));
+  var paddleTop = parseFloat(bodyStyles.getPropertyValue('--paddle-top'));
+  var ballMoveUnit = 1;//vw
+  var ballYLimit = 95;//vh
+
+  // body...
+  console.log('----hoge----');
+  console.log(fld);
+
+  var cycle = setInterval(function(){
+    var sumBrickHeight =  _rmUnit(brickHeight) + _rmUnit(brickMargin) * 2 + _rmUnit(brickBorder) * 2; 
+    var sumBrickWidth =  _rmUnit(brickWidth) + _rmUnit(brickMargin) * 2 + _rmUnit(brickBorder) * 2; 
+
+    console.log('0.5--ball.style.left-->' + ball.style.left);
+
+    console.log('1--px2vw(pF(ball.style.left)) -->' + _rmUnit(ball.style.left,"vw"));
+    //var next = px2vw(pF(ball.style.left)) + dx;
+    var bx = _rmUnit(ball.style.left,"vw") + dx;
+    console.log('2--px2vw(pF(ball.style.left)) + dx-->' + bx);
+    
+    //console.log("px2vw(pF(ball.style.left)) + dx + 'vw' ====" + px2vw(pF(ball.style.left)) + dx + 'vw')
+    ball.style.left = bx + 'vw';
+    //bx = _rmUnit(ball.style.left, "vw") + next;
+    console.log('3--ball.style.left-->' + ball.style.left);
+    console.log('4--bx-->' + bx);
+    var by = pF(ball.style.top = pF(ball.style.top) + dy + 'vh') | 0;
+    var row = ((by - fieldTop) / sumBrickHeight) | 0;
+    var col = parseInt(bx / sumBrickWidth) | 0;
+
+    if(bx < 0 && dx < 0 || bx > (fieldWidthF - 10) && dx > 0) dx *= -1;
+
+    if(bx + 0.5 >= px && bx <= px + 20 && by >= paddleTop && by <= ballYLimit) { // reflect by bar
+      dy *= -1;
+      if(bx <= px + 1) dx = -ballMoveUnit;
+      else if (bx >= px + 1) dx = ballMoveUnit;
+      else if (Math.abs(dx) === ballMoveUnit) dx = (dx * 2 / 3) | 0;
+    }
+    if (by < 0) dy *= -1;
+    if (by >= ballYLimit && !--lifes) clearInterval(cycle), alert('Gameover!');
+    if (by >= ballYLimit && lifes) dy *= -1, lifesNode.innerHTML = lifes;
+    var colNum = 7
+    var brickLeftSide = 1
+    var brickRightSide = sumBrickWidth - 1
+    //console.log("row ---- " + row)
+    //console.log("colNum ---- " + colNum)
+    //console.log("col ---- " + col)
+    var num = parseInt(row * colNum) + parseInt(col);
+    //var num = parseInt((row - 1) * colNum) + parseInt(col) + 1;
+    
+    //console.log("row * colNum + col-----" + num);
+    if (by >= 10 && by <= 100 && fld[num] && fld[num].className != 'removed') {
+    	dy *= -1, fld[num].className = 'removed';
+    	if(dx < 0 && (bx % sumBrickWidth < brickLeftSide || bx % sumBrickWidth > brickRightSide)) dx *= -1;
+    	scoreNode.innerHTML = ++score;
+    	if(score == 70) clearInterval(cycle), alert('Victory');
+    	console.log('--num--' + num)
+    	console.log('--col--' + col)
+    	console.log('--row--' + row)
+    }
+
+  }, 1000/60)
+
+  document.addEventListener('mousemove', function(e) {
+
+    if(e.pageX > 10) {
+      if(e.pageX < document.documentElement.clientWidth ) {
+        pxValue = e.pageX - 50;
+        px = px2vw(pxValue);
+      } else {
+        console.log('-------214----------')
+        px = 98
+      }
+    } else {
+      px = 0
+    }
+    px += 1
+    console.log('--226--px--' + px);
+    paddle.style.left = px + 'vw';
+  }, false)
+  
+    document.addEventListener('touchstart', function(e) {
+        // タッチの情報を含むオブジェクト
+        var touchObj = e.changedTouches[0] ;
+        // タッチ位置を取得する
+        var touchX = touchObj.pageX ; // X座標
+        var touchY = touchObj.pageY ; // Y座標
+
+
+        if(touchX > 10) {
+          if(touchX < document.documentElement.clientWidth ) {
+            pxValue = touchX - 50;
+            px = px2vw(pxValue);
+          } else {
+            console.log('-------214----------')
+            px = 98
+          }
+        } else {
+          px = 0
+        }
+        px += 1
+        console.log('--226--px--' + px);
+        paddle.style.left = px + 'vw';
+    }, false)
+
+var imgurl = getUrlParameter('imgurl')
+$('body').css('background-image', 'url(' + imgurl + ')');
+console.log('---a---' + imgurl)
+
+ disableScroll();
+ preventDefault();
+})(field.children, parseFloat, 129, -1, -1, 10, 0);
+
+  </script>
+
+</html>
