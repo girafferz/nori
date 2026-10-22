@@ -13,5 +13,8 @@
   },
   "devDependencies": {
     "gulp-ejs": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=22.23.4 <23"
   }
 }
